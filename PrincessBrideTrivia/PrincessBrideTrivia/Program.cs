@@ -90,7 +90,7 @@ namespace PrincessBrideTrivia
                 question.Answers[2] = answer3;
                 question.CorrectAnswerIndex = correctAnswerIndex;
             }
-            return questions;
+            return questions;  // First bug is that questions is returning null!
         }
     }
 }
