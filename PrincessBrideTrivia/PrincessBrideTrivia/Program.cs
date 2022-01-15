@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace PrincessBrideTrivia
 {
@@ -92,7 +94,14 @@ namespace PrincessBrideTrivia
 
                 questions[i] = question;
             }
-            return questions;
+            return RandomSort(questions);
+        }
+
+        private static Random random = new Random();
+
+        private static Question[] RandomSort(Question[] questions)
+        {
+            return questions.ToList().OrderBy(x => random.Next()).ToArray();
         }
     }
 }
