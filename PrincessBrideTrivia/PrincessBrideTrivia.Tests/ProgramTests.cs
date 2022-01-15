@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
+using System.Linq;
 
 namespace PrincessBrideTrivia.Tests
 {
@@ -72,6 +73,28 @@ namespace PrincessBrideTrivia.Tests
             Assert.AreEqual(expectedString, percentage);
         }
 
+        [TestMethod]
+        public void LoadQuestions_ReturnsRandomlyOrdered()
+        {
+            string filePath = Path.GetRandomFileName();
+            try
+            {
+                // Arrange
+                GenerateQuestionsFile(filePath, 10);
+
+                // Act
+                Question[] questions1 = Program.LoadQuestions(filePath);
+                Question[] questions2 = Program.LoadQuestions(filePath);
+                bool arraysAreEqual = questions1.SequenceEqual(questions2);
+
+                // Assert 
+                Assert.IsFalse(arraysAreEqual);
+            }
+            finally
+            {
+                File.Delete(filePath);
+            }
+        }
 
         private static void GenerateQuestionsFile(string filePath, int numberOfQuestions)
         {
