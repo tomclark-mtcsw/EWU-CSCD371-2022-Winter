@@ -7,15 +7,6 @@ namespace Logger.Tests
     [TestClass]
     public class FileLoggerTests
     {
-        //public void MethodName_StateUnderTest_ExpectedBehavior()
-        //{
-            // Arrange
-
-            // Act
-
-            // Assert
-        //}
-
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void FileLoggerConstructor_HasNoClassName_ThrowsException()
@@ -43,6 +34,18 @@ namespace Logger.Tests
             logger.Log(LogLevel.Error, "Test Message");
 
             // Assert
+        }
+
+        [TestMethod]
+        public void FileLoggerConstructor_HasClassName_CreatesFileLoggerObject()
+        {
+            // Arrange
+
+            // Act
+            FileLogger logger = new FileLogger(nameof(FileLoggerTests));
+
+            // Assert
+            Assert.AreEqual("FileLogger", logger.GetType().Name);
         }
     }
 }

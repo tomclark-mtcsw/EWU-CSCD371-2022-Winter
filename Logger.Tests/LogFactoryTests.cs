@@ -6,13 +6,31 @@ namespace Logger.Tests
     [TestClass]
     public class LogFactoryTests
     {
-        //public void MethodName_StateUnderTest_ExpectedBehavior()
-        //{
-        //    // Arrange
+        [TestMethod]
+        public void CreateLogger_WithEmptyFilePath_ReturnsNull()
+        {
+            // Arrange
+            var logFactory = new LogFactory();
 
-        //    // Act
+            // Act
+            var logger = logFactory.CreateLogger(nameof(LogFactoryTests));
 
-        //    // Assert
-        //}
+            // Assert
+            Assert.IsNull(logger);
+        }
+
+        [TestMethod]
+        public void CreateLogger_WithFilePath_ReturnsFileLoggerObject()
+        {
+            // Arrange
+            var logFactory = new LogFactory();
+            logFactory.ConfigureFileLogger("MyTestPath");
+
+            // Act
+            var logger = logFactory.CreateLogger(nameof(LogFactoryTests));
+
+            // Assert
+            Assert.AreEqual("FileLogger",logger.GetType().Name);
+        }
     }
 }

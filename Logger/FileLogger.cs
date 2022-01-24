@@ -13,9 +13,9 @@ namespace Logger
         {
         }
 
-        public FileLogger(string className)
+        public FileLogger(string filePath)
         {
-            ClassName = className;
+            LogFilePath = filePath;
         }
 
         public override void Log(LogLevel logLevel, string message)
@@ -25,12 +25,9 @@ namespace Logger
                 string logEntry = DateTime.Now.ToString() + 
                     ", " + base.ClassName +
                     ", " + Enum.GetName(typeof(LogLevel), logLevel) +
-                    ", " + message;
+                    ", " + message + "\n";
 
-                using (StreamWriter output = new StreamWriter(LogFilePath, true))
-                {
-                    output.WriteLine(logEntry);
-                }
+                File.AppendAllText(LogFilePath, logEntry);
             }
             else
             {

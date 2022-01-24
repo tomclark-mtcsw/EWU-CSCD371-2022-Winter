@@ -8,7 +8,7 @@
         {
             FileLogger fileLogger = new FileLogger()
             {
-                ClassName = "LogFactory"
+                ClassName = className
             };
 
             if (!string.IsNullOrEmpty(FilePath))

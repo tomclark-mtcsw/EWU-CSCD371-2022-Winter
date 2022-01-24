@@ -59,7 +59,7 @@ namespace Logger.Tests
         public void Error_WithMessageParams_LogsMessage()
         {
             // Arrange
-            var logger = new TestLogger("BaseLoggerMixinsTests");
+            var logger = new TestLogger(nameof(BaseLoggerMixinsTests));
 
             // Act
             logger.Error("Message {0}", 42);
@@ -74,7 +74,7 @@ namespace Logger.Tests
         public void Error_WithMessageNoParams_LogsMessage()
         {
             // Arrange
-            var logger = new TestLogger("BaseLoggerMixinsTests");
+            var logger = new TestLogger(nameof(BaseLoggerMixinsTests));
 
             // Act
             logger.Error("Plain Message", "");
@@ -89,7 +89,7 @@ namespace Logger.Tests
         public void Warning_WithMessageParams_LogsMessage()
         {
             // Arrange
-            var logger = new TestLogger("BaseLoggerMixinsTests");
+            var logger = new TestLogger(nameof(BaseLoggerMixinsTests));
 
             // Act
             logger.Warning("Message {0}", 42);
@@ -104,7 +104,7 @@ namespace Logger.Tests
         public void Warning_WithMessageNoParams_LogsMessage()
         {
             // Arrange
-            var logger = new TestLogger("BaseLoggerMixinsTests");
+            var logger = new TestLogger(nameof(BaseLoggerMixinsTests));
 
             // Act
             logger.Warning("Plain Message", "");
@@ -119,7 +119,7 @@ namespace Logger.Tests
         public void Information_WithMessageParams_LogsMessage()
         {
             // Arrange
-            var logger = new TestLogger("BaseLoggerMixinsTests");
+            var logger = new TestLogger(nameof(BaseLoggerMixinsTests));
 
             // Act
             logger.Information("Message {0}", 42);
@@ -134,7 +134,7 @@ namespace Logger.Tests
         public void Information_WithMessageNoParams_LogsMessage()
         {
             // Arrange
-            var logger = new TestLogger("BaseLoggerMixinsTests");
+            var logger = new TestLogger(nameof(BaseLoggerMixinsTests));
 
             // Act
             logger.Information("Plain Message", "");
@@ -149,7 +149,7 @@ namespace Logger.Tests
         public void Debug_WithMessageParams_LogsMessage()
         {
             // Arrange
-            var logger = new TestLogger("BaseLoggerMixinsTests");
+            var logger = new TestLogger(nameof(BaseLoggerMixinsTests));
 
             // Act
             logger.Debug("Message {0}", 42);
@@ -164,7 +164,7 @@ namespace Logger.Tests
         public void Debug_WithMessageNoParams_LogsMessage()
         {
             // Arrange
-            var logger = new TestLogger("BaseLoggerMixinsTests");
+            var logger = new TestLogger(nameof(BaseLoggerMixinsTests));
 
             // Act
             logger.Debug("Plain Message", "");
