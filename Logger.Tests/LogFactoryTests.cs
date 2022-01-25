@@ -30,7 +30,7 @@ namespace Logger.Tests
             var logger = logFactory.CreateLogger(nameof(LogFactoryTests));
 
             // Assert
-            Assert.AreEqual("FileLogger",logger.GetType().Name);
+            Assert.AreEqual("FileLogger",logger?.GetType().Name);
         }
     }
 }
