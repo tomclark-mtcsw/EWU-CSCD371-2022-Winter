@@ -22,17 +22,22 @@ namespace Logger
         {
             if (!string.IsNullOrEmpty(LogFilePath))
             {
-                string logEntry = DateTime.Now.ToString() + 
-                    ", " + base.ClassName +
-                    ", " + Enum.GetName(typeof(LogLevel), logLevel) +
-                    ", " + message + "\n";
-
-                File.AppendAllText(LogFilePath, logEntry);
+                UpdateLog(logLevel, message, LogFilePath);
             }
             else
             {
                 throw new ArgumentException("LogFilePath can not be empty!");
             }
+        }
+
+        public virtual void UpdateLog(LogLevel logLevel, string message, string filePath)
+        {
+            string logEntry = DateTime.Now.ToString() +
+                ", " + base.ClassName +
+                ", " + Enum.GetName(typeof(LogLevel), logLevel) +
+                ", " + message + "\n";
+
+            File.AppendAllText(filePath, logEntry);
         }
     }
 }
