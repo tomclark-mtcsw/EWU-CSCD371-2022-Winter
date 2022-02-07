@@ -22,14 +22,14 @@ namespace Generics.Tests
         }
 
         [TestMethod]
-        public void SingleNodeNextIsItself()
+        public void Constructor_SingleNodeNextIsItself_Success()
         {
             Node<int> myNodes = new(123);
             Assert.AreEqual(myNodes, myNodes.Next);
         }
 
         [TestMethod]
-        public void TwoNodeListFirstNodeNextIsItself_Fails()
+        public void Append_TwoNodeListFirstNodeNextIsItself_Fails()
         {
             Node<int> myNodes = new(123);
             myNodes.Append(456);
@@ -89,6 +89,7 @@ namespace Generics.Tests
             myNodes.Append("Third One");
             myNodes.Clear();
             Assert.AreEqual(1, myNodes.Count());
+            Assert.IsTrue(myNodes.Exists("test"));
         }
 
         [TestMethod]
@@ -97,6 +98,16 @@ namespace Generics.Tests
             Node<int> myNodes = new(123);
             var test = myNodes.ToString();
             Assert.AreEqual("String", test?.GetType().Name);
+        }
+
+        [TestMethod]
+        public void ToString_WithClassTypeReturnsString_Success()
+        {
+            Node<Junk> myJunkNodes = new(new Junk("Fubar", "Big Description"));
+            var test = myJunkNodes.ToString();
+            string expectedString = "Fubar, Big Description";
+            Assert.AreEqual("String", test?.GetType().Name);
+            Assert.AreEqual(test, expectedString);
         }
 
         [TestMethod]

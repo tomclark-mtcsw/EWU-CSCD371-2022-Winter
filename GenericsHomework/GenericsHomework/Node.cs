@@ -94,15 +94,22 @@
         {
             bool found = false;
 
-            Node<T> nextNode = Next;
-            while (nextNode != this)
+            if (Count() > 1)
             {
-                if (nextNode.NodeValue.Equals(nodeValue))
+                Node<T> nextNode = Next;
+                while (nextNode != this)
                 {
-                    found = true;
-                    break;
+                    if (nextNode.NodeValue.Equals(nodeValue))
+                    {
+                        found = true;
+                        break;
+                    }
+                    nextNode = nextNode.Next;
                 }
-                nextNode = nextNode.Next;
+            }
+            else if (NodeValue.Equals(nodeValue))
+            {
+                found = true;
             }
 
             return found;
