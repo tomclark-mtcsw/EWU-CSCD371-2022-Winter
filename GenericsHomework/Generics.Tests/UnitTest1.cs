@@ -33,7 +33,7 @@ namespace Generics.Tests
         {
             Node<int> myNodes = new(123);
             myNodes.Append(456);
-            Assert.AreNotEqual(myNodes, myNodes.Next);
+            Assert.AreEqual(false, myNodes == myNodes.Next);
         }
 
         [TestMethod]
@@ -59,7 +59,7 @@ namespace Generics.Tests
             Node<double> myNodes = new(45.67);
             myNodes.Append(22);
             myNodes.Append(33.34);
-            Assert.IsTrue(myNodes.Exists(22));
+            Assert.AreEqual(true,myNodes.Exists(22));
         }
 
         [TestMethod]
@@ -78,7 +78,7 @@ namespace Generics.Tests
             myNodes.Append("Second One");
             myNodes.Append("Third One");
             myNodes.DeleteSingleNode("Second One");
-            Assert.IsFalse(myNodes.Exists("Second One"));
+            Assert.AreEqual(false,myNodes.Exists("Second One"));
         }
 
         [TestMethod]
@@ -89,7 +89,7 @@ namespace Generics.Tests
             myNodes.Append("Third One");
             myNodes.Clear();
             Assert.AreEqual(1, myNodes.Count());
-            Assert.IsTrue(myNodes.Exists("test"));
+            Assert.AreEqual(true, myNodes.Exists("test"));
         }
 
         [TestMethod]
